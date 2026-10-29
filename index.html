@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bon Voyage, Yen</title>
+<meta property="og:title" content="Bon voyage, Yen! 💕">
+<meta property="og:description" content="Sign Yen's farewell card 🍜">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍜</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap">
+<style>
+  :root {
+    --bg: #FFF4EC;
+    --fg: #46302A;
+    --fg-soft: #9C7E73;
+    --accent: #FF7A9C;
+    --accent-2: #F2A541;
+    --herb: #7AA874;
+    --card-bg: #FFFFFF;
+    --line: rgba(70, 48, 42, 0.14);
+    --shadow: rgba(70, 48, 42, 0.14);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #241916;
+      --fg: #FBE9DF;
+      --fg-soft: #C9A696;
+      --accent: #FF93AF;
+      --accent-2: #FFC268;
+      --herb: #93C98C;
+      --card-bg: #30211C;
+      --line: rgba(251, 233, 223, 0.14);
+      --shadow: rgba(0, 0, 0, 0.45);
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    padding: 40px 16px 64px;
+    overflow-x: hidden;
+  }
+  h1, h2 { text-wrap: balance; }
+  .wrap { max-width: 880px; margin: 0 auto; position: relative; }
+
+  header { text-align: center; margin-bottom: 40px; position: relative; }
+  .float-heart { position: absolute; font-size: 1.1rem; opacity: 0.55; animation: bob 3.4s ease-in-out infinite; pointer-events: none; }
+  .float-heart.h1 { top: -6px; left: 10%; }
+  .float-heart.h2 { top: 18px; right: 8%; font-size: 1.4rem; animation-delay: 0.6s; }
+  .float-heart.h3 { top: 70px; left: 2%; font-size: 0.9rem; animation-delay: 1.2s; }
+  .float-heart.h4 { top: 90px; right: 2%; font-size: 1rem; animation-delay: 1.8s; }
+  @keyframes bob { 0%, 100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-8px) rotate(4deg); } }
+
+  .bowl { width: 86px; height: 86px; margin: 0 auto 10px; display: block; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: "Baloo 2", "Nunito", sans-serif; font-weight: 600; font-size: 12.5px;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 12%, var(--card-bg));
+    border: 1.5px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    border-radius: 999px; padding: 6px 16px; margin-bottom: 18px;
+  }
+  header h1 { font-family: "Baloo 2", "Nunito", sans-serif; font-weight: 700; font-size: clamp(2.4rem, 8vw, 3.8rem); line-height: 1.05; margin: 0 0 10px; }
+  header h1 .name { color: var(--accent); }
+  header p { font-size: 1.05rem; color: var(--fg-soft); max-width: 44ch; margin: 0 auto; line-height: 1.55; }
+  .count { font-family: "Baloo 2", sans-serif; font-weight: 600; font-size: 0.85rem; color: var(--herb); margin-top: 16px; }
+  .count strong { color: var(--fg); }
+
+  .board { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 30px 20px; padding: 12px 6px 8px; }
+  .note {
+    position: relative; background: var(--card-bg); border: 1px solid var(--line); border-radius: 18px;
+    padding: 22px 18px 16px;
+    box-shadow: 0 12px 24px -16px var(--shadow), 0 3px 8px -3px var(--shadow);
+    transform: rotate(var(--tilt, 0deg)); min-width: 0;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .note:nth-child(5n+1) { --tilt: -2deg; }
+  .note:nth-child(5n+2) { --tilt: 1.4deg; }
+  .note:nth-child(5n+3) { --tilt: -0.8deg; }
+  .note:nth-child(5n+4) { --tilt: 2.2deg; }
+  .note:nth-child(5n+5) { --tilt: -1.4deg; }
+  .note:hover { transform: rotate(0deg) scale(1.02); transition: transform 0.2s ease; }
+  .note-heart { position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(var(--heart-tilt, -6deg)); font-size: 1.3rem; }
+  .note:nth-child(even) .note-heart { --heart-tilt: 8deg; }
+  .note-msg { font-size: 0.96rem; line-height: 1.55; overflow-wrap: break-word; white-space: pre-wrap; }
+  .note-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; border-top: 1.5px dashed var(--line); padding-top: 12px; margin-top: auto; }
+  .note-sig { font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--herb); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .note-face { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; background: color-mix(in srgb, var(--accent-2) 20%, transparent); }
+  .empty-state { grid-column: 1 / -1; text-align: center; padding: 36px 20px; color: var(--fg-soft); font-size: 0.92rem; border: 1.5px dashed var(--line); border-radius: 14px; }
+
+  .sign { margin-top: 46px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 20px; padding: 26px 22px 24px; box-shadow: 0 14px 30px -20px var(--shadow); }
+  .sign h2 { font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 1.3rem; margin: 0 0 4px; }
+  .sign .hint { font-size: 0.86rem; color: var(--fg-soft); margin: 0 0 18px; }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-soft); margin-bottom: 6px; }
+  .field input, .field textarea {
+    width: 100%; font: inherit; font-size: 0.96rem; color: var(--fg);
+    background: var(--bg); border: 1.5px solid var(--line); border-radius: 12px; padding: 10px 14px; resize: vertical;
+  }
+  .field textarea { min-height: 84px; line-height: 1.5; }
+  .field input:focus, .field textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .sign-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  button[type="submit"] {
+    font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 0.94rem; color: #FFF8F3;
+    background: var(--accent); border: none; border-radius: 999px; padding: 11px 26px; cursor: pointer;
+  }
+  button[type="submit"]:hover { filter: brightness(1.06); }
+  button[type="submit"]:disabled { opacity: 0.55; cursor: not-allowed; }
+  .status { font-size: 0.84rem; color: var(--herb); min-height: 1.2em; }
+  .status[data-error="true"] { color: var(--accent); }
+  footer { text-align: center; margin-top: 36px; font-size: 0.8rem; color: var(--fg-soft); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .float-heart { animation: none; }
+    .note:hover { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="float-heart h1">💛</span>
+    <span class="float-heart h2">😊</span>
+    <span class="float-heart h3">💕</span>
+    <span class="float-heart h4">🍜</span>
+
+    <svg class="bowl" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <path d="M12 8C10 4 14 2 17 4L20 12" stroke="var(--fg-soft)" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M8 14C6 10 10 8 13 10L16 18" stroke="var(--fg-soft)" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M8 46C8 68 26 86 50 86C74 86 92 68 92 46H8Z" fill="var(--card-bg)" stroke="var(--fg)" stroke-width="3"/>
+      <ellipse cx="50" cy="46" rx="42" ry="11" fill="var(--accent-2)" stroke="var(--fg)" stroke-width="3"/>
+      <path d="M34 42C36 38 32 36 30 39C29 36 25 37 26 41" stroke="var(--herb)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M58 40C61 37 59 33 56 35C56 32 52 32 52 36" stroke="var(--herb)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M70 43C72 40 69 37 67 40" stroke="var(--herb)" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="44" cy="46" r="2.6" fill="var(--accent)"/>
+      <circle cx="54" cy="48" r="2.6" fill="var(--accent)"/>
+      <path d="M30 20C30 16 34 16 34 20C34 24 30 26 30 30" stroke="var(--fg-soft)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+      <path d="M50 14C50 10 54 10 54 14C54 18 50 20 50 24" stroke="var(--fg-soft)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+      <path d="M70 20C70 16 74 16 74 20C74 24 70 26 70 30" stroke="var(--fg-soft)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+    </svg>
+
+    <span class="badge">🍜 sending big love your way</span>
+    <h1>Bon voyage,<br><span class="name">Yen!</span> 💕</h1>
+    <p>The team whipped this up to send you off with all the warm fuzzies 💛</p>
+    <div class="count"><strong id="sig-count">&hellip;</strong> sweet messages and counting</div>
+  </header>
+
+  <div class="board" id="board">
+    <div class="empty-state">Loading the love&hellip; 💛</div>
+  </div>
+
+  <div class="sign">
+    <h2>Sign the card 🥹💌</h2>
+    <p class="hint">Your note will appear on the card for everyone.</p>
+    <form id="sign-form">
+      <div class="field">
+        <label for="f-name">Your name</label>
+        <input id="f-name" type="text" maxlength="60" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="f-message">Your message</label>
+        <textarea id="f-message" maxlength="600" required></textarea>
+      </div>
+      <div class="sign-row">
+        <button type="submit" id="sign-submit">Add my note 💗</button>
+        <span class="status" id="sign-status" role="status"></span>
+      </div>
+    </form>
+  </div>
+
+  <footer>Made with 🍜 and 💕 for Yen's send-off</footer>
+</div>
+
+<script>
+  // Paste your Supabase details here (Project Settings -> API).
+  // The publishable/anon key is meant to be public; the database rules
+  // in setup.sql only allow reading and adding notes.
+  var SUPABASE_URL = 'https://tyoxqtczzhcjtuqlxemf.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR5b3hxdGN6emhjanR1cWx4ZW1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyNDA0NjYsImV4cCI6MjEwODgxNjQ2Nn0.w6NEbDJKxNtLM5oT-8HBMRVzS1QEqzbXVnRW4mtdpvc';
+
+  var FACES = ['😊', '🥰', '💛', '✨', '🫶', '😄', '🌟', '💫'];
+  var board = document.getElementById('board');
+  var countEl = document.getElementById('sig-count');
+  var form = document.getElementById('sign-form');
+  var submitBtn = document.getElementById('sign-submit');
+  var statusEl = document.getElementById('sign-status');
+  var API = SUPABASE_URL.replace(/\/$/, '') + '/rest/v1/messages';
+  var HEADERS = { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json' };
+
+  function faceFor(name) {
+    var sum = 0;
+    for (var i = 0; i < name.length; i++) sum += name.charCodeAt(i);
+    return FACES[sum % FACES.length];
+  }
+
+  function showNotice(text) {
+    board.innerHTML = '';
+    var el = document.createElement('div');
+    el.className = 'empty-state';
+    el.textContent = text;
+    board.appendChild(el);
+  }
+
+  function render(messages) {
+    board.innerHTML = '';
+    countEl.textContent = String(messages.length);
+    if (!messages.length) {
+      showNotice('No messages yet — be the first to send some love! 💛');
+      return;
+    }
+    messages.forEach(function (m) {
+      var card = document.createElement('article');
+      card.className = 'note';
+      card.innerHTML =
+        '<span class="note-heart">💕</span>' +
+        '<div class="note-msg"></div>' +
+        '<div class="note-foot"><span class="note-sig"></span><span class="note-face"></span></div>';
+      card.querySelector('.note-msg').textContent = m.message;
+      card.querySelector('.note-sig').textContent = m.name;
+      card.querySelector('.note-face').textContent = faceFor(m.name);
+      board.appendChild(card);
+    });
+  }
+
+  function load() {
+    return fetch(API + '?select=name,message,created_at&order=created_at.asc', { headers: HEADERS })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(render)
+      .catch(function () {
+        if (!countEl.textContent || countEl.textContent === '…') showNotice("Couldn't load the notes. Try refreshing the page.");
+      });
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('f-name').value.trim();
+    var message = document.getElementById('f-message').value.trim();
+    if (!name || !message) return;
+
+    submitBtn.disabled = true;
+    statusEl.dataset.error = 'false';
+    statusEl.textContent = 'Sending your love…';
+
+    fetch(API, {
+      method: 'POST',
+      headers: Object.assign({ Prefer: 'return=minimal' }, HEADERS),
+      body: JSON.stringify({ name: name, message: message })
+    })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return load(); })
+      .then(function () {
+        form.reset();
+        statusEl.textContent = 'Added — thank you! 💛';
+      })
+      .catch(function () {
+        statusEl.dataset.error = 'true';
+        statusEl.textContent = "Couldn't save your note. Please try again.";
+      })
+      .then(function () { submitBtn.disabled = false; });
+  });
+
+  if (SUPABASE_URL.indexOf('PASTE') === 0) {
+    showNotice('This card isn’t connected to its database yet.');
+    submitBtn.disabled = true;
+  } else {
+    load();
+    setInterval(load, 20000);
+  }
+</script>
+</body>
+</html>
